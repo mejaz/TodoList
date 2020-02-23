@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A Todo List - Home</title>
+</head>
+<body>
+	<div>Welcome {{ user }}</div>
+	<a href="{% url 'todo:logout' %}">Logout</a>
+
+	<form>
+		<label>Event</label>
+		<input type="text" name="event">
+		<label>Datetime</label>
+		<input type="date" name="date">
+<!-- 		<label>Time</label>
+		<input type="text" name="time"> -->
+		<button>Submit</button>
+	</form>
+</body>
+</html>
