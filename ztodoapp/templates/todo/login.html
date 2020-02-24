@@ -5,14 +5,15 @@
 {% endblock %}
 
 {% block body %}
-	<h1>A Todo List</h1>
 	{% if messages %}
 		{% for message in messages %}
 			{{ message }}
 		{% endfor %}
 	{% endif %}	
-	<h2>Login</h2>
-	<form action="{% url 'todo:login' %}" method='post'>
+	<div class="login-page-name">
+		<span>Login</span>
+	</div>
+<!-- 	<form action="{% url 'todo:login' %}" method='post'>
 		{% csrf_token %}
 		<label>Username</label>
 		<input type="text" name="username">
@@ -20,8 +21,25 @@
 		<input type="password" name="password">
 		<button>Submit</button>
 		<a href="{% url 'todo:register' %}">Register New User</a>
-	</form>
+	</form> -->
+	<div class="login-form-container">
+		<form action="{% url 'todo:login' %}" method='post'>
+			{% csrf_token %}
+		  <div class="form-group">
+		    <label for="username">Email address</label>
+		    <input type="email" class="form-control" id="username" aria-describedby="emailHelp" name="username">
+		  </div>
+		  <div class="form-group">
+		    <label for="password">Password</label>
+		    <input type="password" class="form-control" id="password" name="password">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
 {% endblock %}
+
+
 
 
 
