@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 
 class Todo(models.Model):
-	task = models.CharField(max_length=500)
+	task = models.CharField(max_length=25)
 	user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
 	task_status = models.BooleanField()
 

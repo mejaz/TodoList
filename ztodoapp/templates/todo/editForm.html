@@ -1,0 +1,41 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+	A Todo List - Edit
+{% endblock %}
+
+{% block body %}
+	<div class="login-page-name">
+		<span>Edit</span>
+	</div>
+<!-- 	<form action="{% url 'todo:login' %}" method='post'>
+		{% csrf_token %}
+		<label>Username</label>
+		<input type="text" name="username">
+		<label>Password</label>
+		<input type="password" name="password">
+		<button>Submit</button>
+		<a href="{% url 'todo:register' %}">Register New User</a>
+	</form> -->
+	<div class="login-form-container">
+		<form action="{% url 'todo:login' %}" method='post'>
+			{% csrf_token %}
+		  <div class="form-group">
+		    <label for="username">Task</label>
+		    <input type="email" class="form-control" id="username" aria-describedby="emailHelp" name="username" value={{}}>
+		  </div>
+		  <div class="form-group">
+		    <label for="password">Password</label>
+		    <input type="password" class="form-control" id="password" name="password">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Submit</button> 
+		  <a href="{% url 'todo:register' %}">Register New User</a>
+		</form>
+	</div>
+
+{% endblock %}
+
+
+
+
+

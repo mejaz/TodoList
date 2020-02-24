@@ -43,7 +43,7 @@ body {
 }
 
 .add-task-box {
-	width: 60%;
+	width: 70%;
 	/*border: 1px solid red;*/
 }
 
@@ -68,18 +68,66 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	align-items: center;		
+	align-items: center;	
+	padding-bottom: 20%;	
 }
 
-.task-item {
+.icon-size {
+	/*padding: 1px;*/
+	font-size: 24px;
+	color: #565756;
+}
+
+.complete {
+	color: green;
+}
+
+.task-item-complete {
+	text-decoration: line-through;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;		
 	height: 60px;
-	border: 1px solid #edece8;
+	border: 1px solid #b0b0ae;
 	margin: 5px;
 	width: 70%;
 	padding: 1%;
+	border-radius: 10px;
+	box-shadow:0 0 5px green;
 }
 
+.flat-button {
+ padding: 5px;
+ border: 0;
+ background: none;
+ box-shadow: none;
+ border-radius: 0px;
+ text-decoration: none;
+ color: blue;
+}
 
+.task-item {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;		
+	height: 60px;
+	border: 1px solid #b0b0ae;
+	margin: 5px;
+	width: 70%;
+	padding: 1%;
+	border-radius: 10px;
+	box-shadow:0 0 20px rgba(0,0,0,0.2);
+}
+
+.error {
+	color: red;
+}
+
+.update-task {
+	width: 100%;
+}
 /* media queries */
 
 @media only screen and (max-width: 800px) {
