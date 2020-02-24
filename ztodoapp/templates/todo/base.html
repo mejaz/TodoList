@@ -1,0 +1,21 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		{% block title %} {% endblock %}
+	</title>
+	
+	<link 
+		rel="stylesheet" 
+		type="text/css" 
+		href="{% static 'todo/todo.css' %}"
+	>
+</head>
+<body>
+	<div class='header'>
+		<span class='header'>A Todo List</span>
+	</div>
+	{% block body %} {% endblock %}
+</body>
+</html>

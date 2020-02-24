@@ -1,20 +1,31 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>A Todo List - Home</title>
-</head>
-<body>
+{% extends 'todo/base.html' %}
+
+{% block title %}
+	A Todo List - Home
+{% endblock %}
+
+{% block body %}
 	<div>Welcome {{ user }}</div>
 	<a href="{% url 'todo:logout' %}">Logout</a>
 
-	<form>
-		<label>Event</label>
-		<input type="text" name="event">
-		<label>Datetime</label>
-		<input type="date" name="date">
-<!-- 		<label>Time</label>
-		<input type="text" name="time"> -->
+	{% if messages %}
+		{% for message in messages %}
+			{{ message }}
+		{% endfor %}
+	{% endif %}
+
+	<form action="{% url 'todo:home' %}" method='POST'>
+		{% csrf_token %}
+		<label>Task</label>
+		<input type="text" name="task">
 		<button>Submit</button>
 	</form>
-</body>
-</html>
+
+	<ol>
+		{% for task in tasks %}
+			<li>{{ task.task }}</li>
+		{% endfor %}
+	</ol>
+{% endblock %}
+
+

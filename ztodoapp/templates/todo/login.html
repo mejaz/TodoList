@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>A Todo List - Login</title>
-</head>
-<body>
+{% extends 'todo/base.html' %}
+
+{% block title %}
+	A Todo List - Login
+{% endblock %}
+
+{% block body %}
 	<h1>A Todo List</h1>
 	{% if messages %}
 		{% for message in messages %}
@@ -20,5 +21,7 @@
 		<button>Submit</button>
 		<a href="{% url 'todo:register' %}">Register New User</a>
 	</form>
-</body>
-</html>
+{% endblock %}
+
+
+

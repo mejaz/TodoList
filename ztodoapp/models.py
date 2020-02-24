@@ -1,18 +1,19 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
 
 class Todo(models.Model):
 	task = models.CharField(max_length=500)
-	task_added_time = models.DateTimeField()
+	user = models.ForeignKey(User, on_delete=models.CASCADE, default=0)
 	task_status = models.BooleanField()
 
 
 	def __repr__(self):
-		return '<Todo {} {} {} {}'.format(
+		return '<Todo {} {} {}'.format(
 			self.task, 
-			self.task_added_time,
+			self.user,
 			self.task_status
 			)
 

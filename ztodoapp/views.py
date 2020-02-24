@@ -5,17 +5,40 @@ from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.models import User
-from .forms import RegisterForm
+from .models import Todo
+from .forms import RegisterForm, AddTaskForm
 
 
 # Create your views here.
 
-def home(request):
-	return JsonResponse({'msg': 'in home page'})
-	# return render(request, 'in the login page')
+# def home(request):
+# 	return JsonResponse({'msg': 'in home page'})
+# 	# return render(request, 'in the login page')
 
-# def addEvent(request):
-# 	pass
+def home(request):
+	if request.method == 'POST':
+
+		form = AddTaskForm(request.POST)
+
+		if form.is_valid():
+			task = Todo(
+				task=request.POST['task'],
+				user_id=request.user.id,
+				task_status=False # pending todo
+				)			
+			task.save()
+
+			# print('12345')
+
+			return HttpResponseRedirect(reverse('todo:home'))
+		else:
+			messages.error(request, form.errors)
+
+	tasks = Todo.objects.filter(user_id=request.user.id)
+	print(tasks)
+
+	form = AddTaskForm()
+	return render(request, 'todo/home.html', {'tasks': tasks})
 
 def loginUser(request):
 	if request.method == 'POST':
@@ -25,7 +48,13 @@ def loginUser(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return render(request, 'todo/home.html', {'user': request.user.username})
+			tasks = Todo.objects.filter(user_id=request.user.id)
+			return render(request, 
+				'todo/home.html', 
+				{
+					'user': request.user.username,
+					'tasks': tasks,
+				})
 		else:
 			messages.error(request, 'Authentication Failed')
 
