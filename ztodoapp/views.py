@@ -95,9 +95,9 @@ def register(request):
 	return render(request, 'todo/register.html')
 
 def deleteTask(request, id):
-	if request.method == 'POST':
-		Todo.objects.filter(pk=id).delete()
-		return HttpResponseRedirect(reverse('todo:home'))
+
+	Todo.objects.filter(pk=id).delete()
+	return HttpResponseRedirect(reverse('todo:home'))
 
 def completeTask(request, id):
 	t = Todo.objects.get(pk=id)
