@@ -2,7 +2,7 @@
 
 Introduction:
 -------------
-A Todo List one can easily add, update and delete tasks. Keep track of tasks completed. It has login feature, so multiple users can make use of this application.
+A Todo List, one can easily add, update, delete or complete tasks. Keep track of tasks pending or completed. It has login feature, so multiple users can make use of this application.
 
 Configuration:
 --------------
