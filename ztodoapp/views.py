@@ -1,5 +1,6 @@
 from django.utils import timezone
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -8,6 +9,8 @@ from django.contrib.auth.models import User
 from .models import Todo
 from .forms import RegisterForm, AddTaskForm, LoginForm
 
+
+@login_required
 def home(request):
 	if request.method == 'POST':
 
